@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+    <link type="text/css" rel="stylesheet" media="all" href="css_tasks.css" />
+
+    <h1>
+        My Tasks
+    </h1>
+
+    <div class="buttonContainer">
+        <button id="addTask">Add Task</button>
+        <div>
+            <script>
+
+
+                const addTask = document.getElementById("addTask");
+                addTask.addEventListener("click", () => {
+
+                    //spacing 
+                    const taskContainer = document.createElement("div");
+                    taskContainer.style.marginBottom = "10px";
+
+                    //textbox
+                    const textBox = document.createElement("input");
+                    textBox.type = "text"
+                    textBox.placeholder = "Enter task"
+                    textBox.style.marginTop = "10px";
+                    textBox.style.display = "inline-block";
+                    taskContainer.appendChild(textBox);
+
+                    // delete button
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.style.display = "inline-block";
+                    taskContainer.appendChild(deleteButton);
+
+                    // complete button
+                    const doneButton = document.createElement("button");
+                    doneButton.textContent = "Complete";
+                    doneButton.style.display = "inline-block";
+                    taskContainer.appendChild(doneButton);
+
+
+                    document.body.appendChild(taskContainer);
+
+                    doneButton.addEventListener("click", () => {
+                        textBox.style.textDecoration = "line-through";
+                        doneButton.remove();
+
+                        // incomplete Button
+                        const incompleteButton = document.createElement("button");
+                        incompleteButton.textContent = "Incomplete";
+                        incompleteButton.style.display = "inline-block";
+                        taskContainer.appendChild(incompleteButton);
+
+
+                        incompleteButton.addEventListener("click", () => {
+                            textBox.style.textDecoration = "none";
+                            incompleteButton.remove();
+                            taskContainer.appendChild(doneButton);
+                        })
+                    })
+
+
+
+                    deleteButton.addEventListener("click", () => {
+                        textBox.remove();
+                        deleteButton.remove();
+                        doneButton.remove();
+                    })
+                })
+            </script>
+
+        </div>
+
+
+        </p>
+</body>
+
+</html>
